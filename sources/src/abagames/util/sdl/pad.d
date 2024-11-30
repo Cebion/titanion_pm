@@ -32,22 +32,7 @@ public class Pad: Input {
   }
 
   public SDL_Joystick* openJoystick(SDL_Joystick *st = null) {
-    if (st == null) {
-      if (SDL_InitSubSystem(SDL_INIT_JOYSTICK) < 0)
-        return null;
-      version (PANDORA) {
-        foreach (i; 0..SDL_NumJoysticks()) {
-          if (to!string(SDL_JoystickNameForIndex(i)) == "nub0") {
-            stick = SDL_JoystickOpen(i);
-          }
-        }
-      } else {
-        stick = SDL_JoystickOpen(0);
-      }
-    } else {
-      stick = st;
-    }
-    return stick;
+    return null; // Disable joystick because of sdl_joystickopen
   }
 
   public void handleEvents() {
